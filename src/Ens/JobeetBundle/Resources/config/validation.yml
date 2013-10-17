@@ -1,0 +1,34 @@
+# src/Ens/JobeetBundle/Resources/config/validation.yml
+    
+Ens\JobeetBundle\Entity\Job:
+    properties:
+        category:
+            - NotBlank: ~
+        type:
+            - NotBlank: ~
+            - Choice: {callback: getTypeValues}
+        company:
+            - NotBlank: ~
+        position:
+            - NotBlank: ~
+        location:
+            - NotBlank: ~
+        description:
+            - NotBlank: ~
+        how_to_apply:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+            - Email: ~
+        file:
+            - Image: ~
+            
+Ens\JobeetBundle\Entity\Affiliate:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        url:
+            - Url: ~
+        email:
+            - NotBlank: ~
+            - Email: ~

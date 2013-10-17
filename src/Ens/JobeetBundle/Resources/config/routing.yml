@@ -1,0 +1,34 @@
+#ens_jobeet_homepage:
+#    pattern:  /hello/{name}
+#    defaults: { _controller: EnsJobeetBundle:Default:index }
+EnsJobeetBundle_homepage:
+    pattern:  /
+    defaults: { _controller: EnsJobeetBundle:Job:index }
+
+EnsJobeetBundle_ens_job:
+        resource: "@EnsJobeetBundle/Resources/config/routing/job.yml"
+        prefix:   /ens_job
+        
+EnsJobeetBundle_category:
+    pattern:  /category/{slug}/{page}
+    defaults: { _controller: EnsJobeetBundle:Category:show, page: 1 }
+
+login:
+    pattern:   /login
+    defaults:  { _controller: EnsJobeetBundle:Default:login }
+    
+login_check:
+    pattern:   /login_check
+    
+logout:
+    pattern:   /logout
+    
+EnsJobeetBundle_api:
+    pattern: /api/{token}/jobs.{_format}
+    defaults: {_controller: "EnsJobeetBundle:Api:list"}
+    requirements:
+        _format: xml|json|yaml
+        
+EnsJobeetBundle_ens_affiliate:
+    resource: "@EnsJobeetBundle/Resources/config/routing/affiliate.yml"
+    prefix:   /affiliate
